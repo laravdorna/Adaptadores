@@ -22,6 +22,8 @@ public class Adaptadores {
         player.play("file.mp4");
         player = new FormatAdapter(new VLC());
         player.play("file.avi");
+        payer= new FormatAdapter(new DivX());
+        player.play("file.dvix");
     }
 
     /*
@@ -37,6 +39,7 @@ public class Adaptadores {
          a la que quiere transformar.
          */
         private MediaPackage media;
+        private MediaDivX divX;
 
         /* 
         se crea el contructor en el que se le pasa un objeto que implemente de
@@ -53,10 +56,20 @@ public class Adaptadores {
          * MediaPackage y adaptarlo a un objeto que implemente de MediaPlayer
          *
          */
+        
+        public FormatAdapter(MediaPackage m) {
+            divX = m;
+        }
+        
         @Override
         public void play(String filename) {
             System.out.print("Using Adapter --> ");
             media.playFile(filename);
+        }
+        @Override
+        public void play(String filename) {
+            System.out.print("Using Adapter --> ");
+            divX.playFilm(filename);
         }
     }
 }
